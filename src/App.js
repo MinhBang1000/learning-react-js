@@ -1,23 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
 
 function App() {
+
+  const [title, setTitle] = useState('')
+  const [breakpoint, setBreakPoint] = useState('posts')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/${breakpoint}`)
+      .then(res => res.json())
+      .then(data => {
+        setData(data)
+      })
+  },[breakpoint])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="app" style={{padding: 10}}>  
+      <label 
+        style={{paddingLeft: 10, paddingRight: 10, fontWeight: "bold"}}
+      >
+        Title
+      </label>
+      <input 
+        value={title}  
+        onChange={(e) => setTitle(e.target.value)} 
+      />
+        {/* Control */}
+      <div>
+        <button 
+          onClick={() => setBreakPoint('posts')}
         >
-          Learn React
-        </a>
-      </header>
+          Posts
+        </button>
+        <button
+          onClick={() => setBreakPoint('albums')}
+        >
+          Albums
+        </button>
+        <button
+          onClick={() => setBreakPoint('comments')}
+        >
+          Comments
+        </button>
+      </div>
+      {/* Show */}
+      <div>
+        <ul>
+          {
+            data.map((item) => <li key={item.id}>{item.title || item.body}</li>)
+          }
+        </ul>
+      </div>
     </div>
   );
 }
