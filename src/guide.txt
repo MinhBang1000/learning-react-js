@@ -1,0 +1,6 @@
+Sử dụng useContext
+1. Tạo ra file NameContext.jsx
+2. Định nghĩa các state dùng chung và các thao tác setState trong file đó
+3. Truyền các state và state method đó cho Context.Provider qua value
+4. Wrapper chính là Context.Provider ({children}) --> Bao quanh App tại index.js vì đó là cao nhất
+5. Khi sử dụng là đứng ở phía Consumer --> const name = useContext(NameContext)

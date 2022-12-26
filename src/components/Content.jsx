@@ -1,9 +1,11 @@
+import Paragraph from './Paragraph'
+
 const Content = ({data}) => {
 
     return (
-        <h1>
-            React JS Learning
-        </h1>
+        <div className="content">
+            <Paragraph />
+        </div>
     )
 
 }
