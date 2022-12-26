@@ -1,33 +1,35 @@
-import { useEffect, useState } from "react";
+import { useReducer } from "react";
 
-function App() {
-  const [title, setTitle] = useState("");
-  const [toggle, setToggle] = useState(false);
-  const [size, setSize] = useState(window.innerWidth);
+// initState
+const initState = 0
 
-  // One effect use for one Logic
-  useEffect(() => {
-    const handleResize = () => {
-      setSize(window.innerWidth);
-    };
+// Action 
+const UP_COUNT = 'up'
+const DOWN_COUNT = 'down'
 
-    // Add event by use effect
-    window.addEventListener("resize", handleResize);
+// Reducer function
+const reducer = (state, action) => {
+  switch (action) {
+    case UP_COUNT: {
+      return state + 1
+    }
+    case DOWN_COUNT: {
+      return state - 1
+    }
+    default: {
+      throw new Error("Invalid action !")
+    }
+  }
+}
 
-    // clean up function 
-    return function () {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+const App = () => {
+  const [count, dispatch] = useReducer(reducer, initState)
 
   return (
-    <div className="app" style={{ padding: 10 }}>
-      <label style={{ paddingLeft: 10, paddingRight: 10, fontWeight: "bold" }}>
-        Title
-      </label>
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
-      <button onClick={() =>  setToggle(!toggle)}>Toggle</button>
-      {toggle && <h1>{size}</h1>}
+    <div className="app" style={{ padding: 20 }}>
+      <h1>{count}</h1>
+      <button onClick={() => dispatch(DOWN_COUNT)}>Down</button>
+      <button onClick={() => dispatch(UP_COUNT)}>Up</button>
     </div>
   );
 }
