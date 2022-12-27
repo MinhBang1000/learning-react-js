@@ -4,3 +4,14 @@ Sử dụng useContext
 3. Truyền các state và state method đó cho Context.Provider qua value
 4. Wrapper chính là Context.Provider ({children}) --> Bao quanh App tại index.js vì đó là cao nhất
 5. Khi sử dụng là đứng ở phía Consumer --> const name = useContext(NameContext)
+
+Module CSS --> Không trùng tên Class --> Không kế thừa
+GlobalStyles --> Bao gói --> Hỗ trợ kế thừa cho Module CSS 
+Clsx --> Dùng nhiều module css class một lúc --> Gọn gàng --> Có tính linh hoạt
+
+Sử dụng clsx + module css + GlobalStyles
+1. npm i clsx
+2. className = { clsx(styles.btn, {
+    [nameField]: true, // boolean var
+    'd-flex': true // GlobalStyles
+}) } 

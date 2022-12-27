@@ -1,62 +1,48 @@
-import { ADD_TASK,DELETE_TASK,UPDATE_TASK,SET_TASK } from "./constraints"
+import { ADD,DELETE,SET } from "./constraints"
+
 
 const initState = {
     task: '',
     tasks: []
 }
 
-let id = 0
-
 const reducer = (state, action) => {
-
-    let newState =  state
+    let id = 0
+    let newState
     switch (action.type) {
-        case ADD_TASK: {
-            id += 1
-            const instance = {
-                id,
-                task: state.task
-            }
-            newState = {
-                task: '',
-                tasks: [...state.tasks, instance]
-            }
-            break
-        }
-        case DELETE_TASK: {
-            newState = {
-                ...state,
-                tasks: state.tasks.filter(task => task.id !== action.payload)
-            }
-            break
-        }
-        case UPDATE_TASK: {
-            let tasks = state.tasks.filter(task => task.id !== action.payload)
-            const updatedInstance = {
-                id: action.payload,
-                task: state.task
-            }
-            tasks = [...tasks, updatedInstance]
-            newState = {
-                ...state,
-                tasks
-            }
-            break
-        }
-        case SET_TASK: {
+        case SET: {
             newState = {
                 ...state,
                 task: action.payload
             }
             break
         }
+        case ADD: {
+            id += 1
+            const obj = {
+                id,
+                task: state.task
+            }
+            newState = {
+                ...state,
+                tasks: [...state.tasks, obj]
+            }
+            break
+        }
+        case DELETE: {
+            newState = {
+                ...state,
+                tasks: state.tasks.filter((task) => (task.id !== action.payload))
+            }
+            break
+        }
         default: {
-            throw new Error("Invalid error !")
+            throw new Error("Invalid action !")
         }
     }
+
     return newState
 
 }
-
-export {initState}
-export default reducer
+export { initState }
+export default reducer 

@@ -1,34 +1,24 @@
-const ADD_TASK = "add_task"
-const SET_TASK = "set_task"
-const DELETE_TASK = "delete_task"
-const UPDATE_TASK = "update_task"
-
-
-const addTask = () => {
-    return {
-        type: ADD_TASK
-    }
-}
-
+const SET = "set"
 const setTask = (payload) => {
     return {
-        type: SET_TASK,
+        type: SET,
         payload
     }
 }
 
+const ADD = "add"
+const addTask = () => {
+    return {
+        type: ADD
+    }
+}
+
+const DELETE = "delete"
 const deleteTask = (payload) => {
     return {
-        type: DELETE_TASK,
+        type: DELETE,
         payload
     }
 }
 
-const updateTask = (payload) => {
-    return {
-        type: UPDATE_TASK,
-        payload
-    }
-}
-
-export {addTask,setTask,deleteTask,updateTask, ADD_TASK,SET_TASK,DELETE_TASK,UPDATE_TASK}
+export { SET,ADD,DELETE,addTask,deleteTask,setTask }
