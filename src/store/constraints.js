@@ -1,24 +1,22 @@
-const SET = "set"
-const setTask = (payload) => {
-    return {
-        type: SET,
-        payload
-    }
-}
-
-const ADD = "add"
+const ADD_TASK = "AddTask"
 const addTask = () => {
     return {
-        type: ADD
+        type: ADD_TASK
     }
 }
-
-const DELETE = "delete"
+const SET_TASK = "SetTask"
+const setTask = (payload) => {
+    return {
+        type: SET_TASK,
+        payload
+    }
+}
+const DELETE_TASK = "DeleteTask"
 const deleteTask = (payload) => {
     return {
-        type: DELETE,
+        type: DELETE_TASK,
         payload
     }
 }
 
-export { SET,ADD,DELETE,addTask,deleteTask,setTask }
+export { ADD_TASK,DELETE_TASK,SET_TASK, addTask, deleteTask, setTask }

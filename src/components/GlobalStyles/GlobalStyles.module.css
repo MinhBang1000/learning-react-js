@@ -1,0 +1,13 @@
+.wrapper {
+    background-color: #8F4DF7;
+    height: 100%;
+}
+
+.global {
+    /* CSS for all items */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: sans-serif;
+}

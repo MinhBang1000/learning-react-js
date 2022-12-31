@@ -1,0 +1,38 @@
+.control {
+    display: flex;
+    justify-content: right;
+    align-items: stretch;
+}
+
+.control input {
+    flex-grow: 1;
+    font-size: 18px;
+    padding: 5px;
+    border: #fff 2px solid;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.control input:hover {
+    border-color: rgb(170, 191, 204);
+}
+
+.control button {
+    width: 28%;
+    border: none;
+    cursor: pointer;
+    background-color: #4EB7F8;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    opacity: 1;
+    transition: opacity 0.3s;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.control button:hover {
+    opacity: 0.5;
+}
+

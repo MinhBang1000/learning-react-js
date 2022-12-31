@@ -1,16 +1,19 @@
-import Control from "./components/Controling"
-import Header from "./components/Heading"
-import List from "./components/Listing"
-
-
+import Header from "./components/Header"
+import Control from "./components/Control"
+import TaskList from "./components/TaskList"
+import Card from "./components/Card"
 const App = () => {
 
   return (
-    <div className="app" style={{padding: 20}}> 
+    <> 
       <Header />
-      <Control />      
-      <List />
-    </div>
+      <Card>
+        <Control />
+      </Card>
+      <Card>
+        <TaskList />
+      </Card>
+    </>
   )
 }
 

@@ -1,48 +1,43 @@
-import { ADD,DELETE,SET } from "./constraints"
-
+import {ADD_TASK, DELETE_TASK, SET_TASK} from "./constraints"
 
 const initState = {
     task: '',
     tasks: []
 }
 
+let id = 0
+
 const reducer = (state, action) => {
-    let id = 0
     let newState
     switch (action.type) {
-        case SET: {
+        case ADD_TASK:
+            id += 1
+            const newInstance = {
+                id,
+                name: state.task
+            }
+            newState = {
+                ...state,
+                tasks: [...state.tasks, newInstance]
+            }
+            break
+        case DELETE_TASK:
+            newState = {
+                ...state,
+                tasks: state.tasks.filter(task => task.id !== action.payload)
+            }
+            break
+        case SET_TASK:
             newState = {
                 ...state,
                 task: action.payload
             }
             break
-        }
-        case ADD: {
-            id += 1
-            const obj = {
-                id,
-                task: state.task
-            }
-            newState = {
-                ...state,
-                tasks: [...state.tasks, obj]
-            }
-            break
-        }
-        case DELETE: {
-            newState = {
-                ...state,
-                tasks: state.tasks.filter((task) => (task.id !== action.payload))
-            }
-            break
-        }
-        default: {
+        default:
             throw new Error("Invalid action !")
-        }
     }
-
     return newState
-
 }
-export { initState }
+
+export {initState}
 export default reducer 
