@@ -2,16 +2,24 @@
     display: flex;
     justify-content: right;
     align-items: stretch;
+    flex-direction: row;
+}
+
+@media screen and (max-width < 768px) {
+    .control {
+        flex-direction: column;
+    }
 }
 
 .control input {
-    flex-grow: 1;
+    flex: 3;
     font-size: 18px;
     padding: 5px;
     border: #fff 2px solid;
     border-radius: 5px;
     outline: none;
     transition: border-color 0.3s;
+    min-width: 10px;
 }
 
 .control input:hover {
@@ -19,7 +27,7 @@
 }
 
 .control button {
-    width: 28%;
+    flex: 1;
     border: none;
     cursor: pointer;
     background-color: #4EB7F8;

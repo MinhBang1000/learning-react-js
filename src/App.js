@@ -1,18 +1,16 @@
-import Header from "./components/Header"
-import Control from "./components/Control"
-import TaskList from "./components/TaskList"
-import Card from "./components/Card"
+import { Routes, Route } from "react-router-dom"
+import HomePage from "./pages/HomePage"
+import ContactPage from "./pages/ContactPage"
+import Navbar from "./components/Navbar"
 const App = () => {
 
   return (
     <> 
-      <Header />
-      <Card>
-        <Control />
-      </Card>
-      <Card>
-        <TaskList />
-      </Card>
+      <Navbar />
+      <Routes>
+        <Route  path="/" element={<HomePage />}/>
+        <Route  path="/contact" element={<ContactPage />}/>
+      </Routes>
     </>
   )
 }
